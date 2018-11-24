@@ -15,25 +15,29 @@ class Search extends Component{
 	};
 
 	ontextChange = (e) =>{
-		this.setState({ [e.target.name]: e.target.value},
-		 () =>{
-			 console.log(`${this.state.apiUrl}?key=${this.state.apiKey}&q=${this.state.searchText}&image_type=photo&per_page=${this.state.amount}&safesearch=true`)
-			 axios.get(`${this.state.apiUrl}?key=${this.state.apiKey}&q=${this.state.searchText}&image_type=photo&per_page=${this.state.amount}&safesearch=true`)
-			 .then(res => this.setState({images: res.data.hits}))
-			 .catch(err => console.log(err));
-		 });
-	}
+		const val = e.target.value;
+		this.setState({ [e.target.name]: val},
+			() =>{
+				if(val === ''){
+					this.setState({images: []})
+				} else{
+					axios.get(`${this.state.apiUrl}?key=${this.state.apiKey}&q=${this.state.searchText}&image_type=photo&per_page=${this.state.amount}&safesearch=true`)
+					.then(res => this.setState({images: res.data.hits}))
+					.catch(err => console.log(err));
+				}
+			});
+		}
 
-	onAmountChange = (e, index, value) =>{
-		this.setState({
-			amount: value
-		})
-	}
+		onAmountChange = (e, index, value) =>{
+			this.setState({
+				amount: value
+			})
+		}
 
-	render() {
+		render() {
 			console.log(this.state.images)
-		return(
-			<div>
+			return(
+				<div>
 				<TextField name="searchText"
 				value={this.state.searchText}
 				onChange={this.ontextChange}
@@ -53,9 +57,9 @@ class Search extends Component{
 				</SelectField>
 				<br />
 				{this.state.images.length > 0 ? (<ImageResults images={this.state.images} />) :null}
-			</div>
-		)
+				</div>
+			)
+		}
 	}
-}
 
-export default Search;
+	export default Search;
