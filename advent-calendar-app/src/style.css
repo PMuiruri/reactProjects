@@ -1,0 +1,67 @@
+body{
+	margin: 0;
+	font-family: sans-serif;
+	background-image: url('/images/christmas1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+h1 {
+  color: #fff;
+  text-shadow: #111 0 0 5px;
+  font-size: 250%;
+  width: 50%;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.door > .door-opened > img{
+	  position: fixed;
+	 	background-color: rgba(0, 0, 0, 0.3);
+	  z-index: 100;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  background-color: white;
+	  width: 50rem;
+	  height: 50rem;
+}
+.door > .door-closed > img {
+  width: 7rem;
+  height: 7rem;
+}
+
+.door {
+	margin-left: 3% 5%;
+  height: 7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.door > .day {
+	position: absolute;
+	margin: 2% 3.4%;
+  flex: 1;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+	z-index: 2;
+}
+
+.door > .door-opened,
+.door > .door-closed {
+  flex: 2;
+}
+
+.calendar {
+	width: 55%;
+	height: 80%;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 0.1rem;
+  grid-column-gap: 0.1rem;
+}
