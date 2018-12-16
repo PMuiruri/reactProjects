@@ -1,0 +1,22 @@
+*{
+	box-sizing: border-box;
+	margin: auto;
+	align-items: center;
+}
+body{
+	margin: 1%;
+	padding: auto;
+
+}
+
+li {
+	list-style: none;
+}
+a{
+	color: inherit;
+
+}
+footer{
+	text-align: center;
+
+}
